@@ -23,8 +23,10 @@ env:
   - VERSION=latest 
     CMD="build_full"
 
-script:
+before_script:
 - make $CMD
+
+script:
 - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME ----password-stdin
 - docker push $IMAGE:$VERSION
 
