@@ -14,10 +14,14 @@ env:
   - REPO=latex
   - IMAGE=$(NS)/$(REPO)
   matrix:
-  - VERSION=ubuntu CMD="build_ubuntu"
-  - VERSION=ctanfull CMD="build_full"
-  - VERSION=ctanbasic CMD="build_basic"
-  - VERSION=latest CMD="build_full"
+  - VERSION=ubuntu 
+    CMD="build_ubuntu"
+  - VERSION=ctanfull 
+    CMD="build_full"
+  - VERSION=ctanbasic 
+    CMD="build_basic"
+  - VERSION=latest 
+    CMD="build_full"
 
 script:
 - make $CMD
