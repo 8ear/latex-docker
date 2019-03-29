@@ -10,9 +10,9 @@ env:
   # The following variables are setup via Travis CI project page:
   # - DOCKER_USERNAME
   # - DOCKER_PASSWORD
-  - NS=blang
-  - REPO=latex
-  - IMAGE=$(NS)/$(REPO)
+   - NS="blang"
+   - REPO="latex"
+   - IMAGE="$NS/$REPO"
   matrix:
   - VERSION=ubuntu 
     CMD="build_ubuntu"
