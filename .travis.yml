@@ -1,0 +1,30 @@
+language: minimal
+dist: xenial
+addons:
+  apt:
+    sources:
+      - docker-xenial
+
+env:
+  global:
+  # The following variables are setup via Travis CI project page:
+  # - DOCKER_USERNAME
+  # - DOCKER_PASSWORD
+  - NS=blang
+  - REPO=latex
+  - IMAGE=$(NS)/$(REPO)
+  matrix:
+  - VERSION=ubuntu CMD="build_ubuntu"
+  - VERSION=ctanfull CMD="build_full"
+  - VERSION=ctanbasic CMD="build_basic"
+  - VERSION=latest CMD="build_full"
+
+script:
+- make $CMD
+- echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME ----password-stdin
+- docker push $IMAGE:$VERSION
+
+notifications:
+  # don't notify me when things fail
+  #email: false
+  
